@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خونا‌مون - Khonamon</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>🌹 به خانه خوش آمدید 🌹</h1>
+    <p>جایی برای شعر، موسیقی، و لحظه‌های ناب</p>
+    <button onclick="playSantur()">آغاز سفر</button>
+  </main>
+
+  <audio id="santur" src="sound/santur.mp3"></audio>
+
+  <script>
+    function playSantur() {
+      document.getElementById('santur').play();
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Registered'));
+    }
+  </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered!'))
+      .catch(err => console.error('SW failed', err));
+  }
+</script>
+</body>
+</html>
